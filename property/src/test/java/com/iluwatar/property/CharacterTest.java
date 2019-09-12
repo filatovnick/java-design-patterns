@@ -22,13 +22,13 @@
  */
 package com.iluwatar.property;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.iluwatar.property.Character.Type;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Date: 12/28/15 - 7:46 PM
@@ -73,7 +73,7 @@ public class CharacterTest {
   }
 
   @Test
-  public void testToString() throws Exception {
+  public void testToString() {
     final Character prototype = new Character();
     prototype.set(Stats.ARMOR, 1);
     prototype.set(Stats.AGILITY, 2);
@@ -91,7 +91,7 @@ public class CharacterTest {
   }
 
   @Test
-  public void testName() throws Exception {
+  public void testName() {
     final Character prototype = new Character();
     prototype.set(Stats.ARMOR, 1);
     prototype.set(Stats.INTELLECT, 2);
@@ -107,7 +107,7 @@ public class CharacterTest {
   }
 
   @Test
-  public void testType() throws Exception {
+  public void testType() {
     final Character prototype = new Character();
     prototype.set(Stats.ARMOR, 1);
     prototype.set(Stats.INTELLECT, 2);

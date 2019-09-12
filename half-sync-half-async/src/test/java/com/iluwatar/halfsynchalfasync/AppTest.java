@@ -22,9 +22,9 @@
  */
 package com.iluwatar.halfsynchalfasync;
 
-import java.util.concurrent.ExecutionException;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 
@@ -34,7 +34,7 @@ import org.junit.Test;
 public class AppTest {
 
   @Test
-  public void test() throws InterruptedException, ExecutionException {
+  public void test() {
     App.main(null);
   }
 }

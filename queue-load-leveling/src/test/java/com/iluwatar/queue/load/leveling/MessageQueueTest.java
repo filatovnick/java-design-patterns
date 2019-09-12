@@ -22,9 +22,9 @@
  */
 package com.iluwatar.queue.load.leveling;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 
@@ -42,7 +42,7 @@ public class MessageQueueTest {
     msgQueue.submitMsg(new Message("MessageQueue Test"));
     
     // retrieve message
-    assertEquals(msgQueue.retrieveMsg().getMsg(), "MessageQueue Test");
+    assertEquals("MessageQueue Test", msgQueue.retrieveMsg().getMsg());
   }
 
 }

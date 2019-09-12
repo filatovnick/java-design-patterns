@@ -24,25 +24,25 @@ package com.iluwatar.hexagonal.banking;
 
 import com.iluwatar.hexagonal.mongo.MongoConnectionPropertiesLoader;
 import com.mongodb.MongoClient;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for Mongo banking adapter
  */
-@Ignore
-public class MongoBankTest {
+@Disabled
+class MongoBankTest {
 
   private static final String TEST_DB = "lotteryDBTest";
   private static final String TEST_ACCOUNTS_COLLECTION = "testAccounts";
 
   private MongoBank mongoBank;
 
-  @Before
-  public void init() {
+  @BeforeEach
+  void init() {
     MongoConnectionPropertiesLoader.load();
     MongoClient mongoClient = new MongoClient(System.getProperty("mongo-host"),
         Integer.parseInt(System.getProperty("mongo-port")));
@@ -52,12 +52,12 @@ public class MongoBankTest {
   }
 
   @Test
-  public void testSetup() {
+  void testSetup() {
     assertEquals(0, mongoBank.getAccountsCollection().count());
   }
 
   @Test
-  public void testFundTransfers() {
+  void testFundTransfers() {
     assertEquals(0, mongoBank.getFunds("000-000"));
     mongoBank.setFunds("000-000", 10);
     assertEquals(10, mongoBank.getFunds("000-000"));

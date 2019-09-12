@@ -22,9 +22,9 @@
  */
 package com.iluwatar.front.controller;
 
-import static org.junit.Assert.assertSame;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
  * Date: 12/13/15 - 1:35 PM
@@ -34,7 +34,7 @@ import org.junit.Test;
 public class ApplicationExceptionTest {
 
   @Test
-  public void testCause() throws Exception {
+  public void testCause() {
     final Exception cause = new Exception();
     assertSame(cause, new ApplicationException(cause).getCause());
   }

@@ -23,23 +23,23 @@
 package units;
 
 import abstractextensions.CommanderExtension;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * Created by Srdjan on 03-May-17.
  */
 public class CommanderUnitTest {
   @Test
-  public void getUnitExtension() throws Exception {
+  public void getUnitExtension() {
 
     final Unit unit = new CommanderUnit("CommanderUnitName");
 
     assertNull(unit.getUnitExtension("SoldierExtension"));
     assertNull(unit.getUnitExtension("SergeantExtension"));
-    assertNotNull((CommanderExtension) unit.getUnitExtension("CommanderExtension"));
+    assertNotNull(unit.getUnitExtension("CommanderExtension"));
   }
 
 }

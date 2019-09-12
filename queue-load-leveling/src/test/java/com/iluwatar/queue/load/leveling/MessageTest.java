@@ -22,8 +22,9 @@
  */
 package com.iluwatar.queue.load.leveling;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 
@@ -38,6 +39,6 @@ public class MessageTest {
     // Parameterized constructor test.
     String testMsg = "Message Test";
     Message msg = new Message(testMsg);
-    assertEquals(msg.getMsg(), testMsg);
+    assertEquals(testMsg, msg.getMsg());
   }
 }

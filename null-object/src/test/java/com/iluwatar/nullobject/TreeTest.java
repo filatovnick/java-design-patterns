@@ -25,15 +25,18 @@ package com.iluwatar.nullobject;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Date: 12/26/15 - 11:44 PM
@@ -44,12 +47,12 @@ public class TreeTest {
 
   private InMemoryAppender appender;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     appender = new InMemoryAppender();
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
     appender.stop();
   }
@@ -107,7 +110,7 @@ public class TreeTest {
   }
 
   @Test
-  public void testGetLeft() throws Exception {
+  public void testGetLeft() {
     final Node level1 = TREE_ROOT.getLeft();
     assertNotNull(level1);
     assertEquals("level1_a", level1.getName());
@@ -127,7 +130,7 @@ public class TreeTest {
   }
 
   @Test
-  public void testGetRight() throws Exception {
+  public void testGetRight() {
     final Node level1 = TREE_ROOT.getRight();
     assertNotNull(level1);
     assertEquals("level1_b", level1.getName());

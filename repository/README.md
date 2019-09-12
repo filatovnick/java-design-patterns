@@ -3,7 +3,6 @@ layout: pattern
 title: Repository
 folder: repository
 permalink: /patterns/repository/
-pumlid: JSV13OCm30NGLM00udktCS42eyI9xE-YRjyUUtjlLQij3qblomNCU14vF-LKNBbdYDTX44EfevEsV1ZiTFERjqD2Jzic0-8Mr3b-89SvGZ7yGuBwrvBUoypUlW00
 categories: Persistence Tier
 tags:
  - Java
@@ -36,3 +35,4 @@ Use the Repository pattern when
 
 * [Don’t use DAO, use Repository](http://thinkinginobjects.com/2012/08/26/dont-use-dao-use-repository/)
 * [Advanced Spring Data JPA - Specifications and Querydsl](https://spring.io/blog/2011/04/26/advanced-spring-data-jpa-specifications-and-querydsl/)
+* [Repository Pattern Benefits and Spring Implementation](https://stackoverflow.com/questions/40068965/repository-pattern-benefits-and-spring-implementation)

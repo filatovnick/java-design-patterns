@@ -28,20 +28,20 @@ import com.iluwatar.hexagonal.domain.LotteryTicketId;
 import com.iluwatar.hexagonal.domain.PlayerDetails;
 import com.iluwatar.hexagonal.mongo.MongoConnectionPropertiesLoader;
 import com.mongodb.MongoClient;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for Mongo based ticket repository
  */
-@Ignore
-public class MongoTicketRepositoryTest {
+@Disabled
+class MongoTicketRepositoryTest {
 
   private static final String TEST_DB = "lotteryTestDB";
   private static final String TEST_TICKETS_COLLECTION = "lotteryTestTickets";
@@ -49,8 +49,8 @@ public class MongoTicketRepositoryTest {
 
   private MongoTicketRepository repository;
 
-  @Before
-  public void init() {
+  @BeforeEach
+  void init() {
     MongoConnectionPropertiesLoader.load();
     MongoClient mongoClient = new MongoClient(System.getProperty("mongo-host"),
         Integer.parseInt(System.getProperty("mongo-port")));
@@ -61,20 +61,20 @@ public class MongoTicketRepositoryTest {
   }
 
   @Test
-  public void testSetup() {
-    assertTrue(repository.getCountersCollection().count() == 1);
-    assertTrue(repository.getTicketsCollection().count() == 0);
+  void testSetup() {
+    assertEquals(1, repository.getCountersCollection().count());
+    assertEquals(0, repository.getTicketsCollection().count());
   }
 
   @Test
-  public void testNextId() {
+  void testNextId() {
     assertEquals(1, repository.getNextId());
     assertEquals(2, repository.getNextId());
     assertEquals(3, repository.getNextId());
   }
 
   @Test
-  public void testCrudOperations() {
+  void testCrudOperations() {
     // create new lottery ticket and save it
     PlayerDetails details = new PlayerDetails("foo@bar.com", "123-123", "07001234");
     LotteryNumbers random = LotteryNumbers.createRandom();

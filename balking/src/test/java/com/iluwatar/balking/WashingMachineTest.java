@@ -22,44 +22,50 @@
  */
 package com.iluwatar.balking;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for {@link WashingMachine}
  */
 public class WashingMachineTest {
 
-  private volatile WashingMachineState machineStateGlobal;
+  private FakeDelayProvider fakeDelayProvider = new FakeDelayProvider();
 
   @Test
-  public void wash() throws Exception {
-    WashingMachine washingMachine = new WashingMachine();
-    ExecutorService executorService = Executors.newFixedThreadPool(2);
-    executorService.execute(washingMachine::wash);
-    executorService.execute(() -> {
-      washingMachine.wash();
-      machineStateGlobal = washingMachine.getWashingMachineState();
-    });
-    executorService.shutdown();
-    try {
-      executorService.awaitTermination(10, TimeUnit.SECONDS);
-    } catch (InterruptedException ie) {
-      ie.printStackTrace();
-    }
+  public void wash() {
+    WashingMachine washingMachine = new WashingMachine(fakeDelayProvider);
+
+    washingMachine.wash();
+    washingMachine.wash();
+
+    WashingMachineState machineStateGlobal = washingMachine.getWashingMachineState();
+
+    fakeDelayProvider.task.run();
+
+    // washing machine remains in washing state
     assertEquals(WashingMachineState.WASHING, machineStateGlobal);
+
+    // washing machine goes back to enabled state
+    assertEquals(WashingMachineState.ENABLED, washingMachine.getWashingMachineState());
   }
 
   @Test
-  public void endOfWashing() throws Exception {
+  public void endOfWashing() {
     WashingMachine washingMachine = new WashingMachine();
     washingMachine.wash();
     assertEquals(WashingMachineState.ENABLED, washingMachine.getWashingMachineState());
   }
 
+  private class FakeDelayProvider implements DelayProvider {
+    private Runnable task;
+
+    @Override
+    public void executeAfterDelay(long interval, TimeUnit timeUnit, Runnable task) {
+      this.task = task;
+    }
+  }
 }

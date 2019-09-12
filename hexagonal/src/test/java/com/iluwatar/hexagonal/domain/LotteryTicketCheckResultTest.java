@@ -22,26 +22,25 @@
  */
 package com.iluwatar.hexagonal.domain;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
-import org.junit.Test;
-
 import com.iluwatar.hexagonal.domain.LotteryTicketCheckResult.CheckResult;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
  * 
  * Unit tests for {@link LotteryTicketCheckResult}
  *
  */
-public class LotteryTicketCheckResultTest {
+class LotteryTicketCheckResultTest {
 
   @Test
-  public void testEquals() {
+  void testEquals() {
     LotteryTicketCheckResult result1 = new LotteryTicketCheckResult(CheckResult.NO_PRIZE);
     LotteryTicketCheckResult result2 = new LotteryTicketCheckResult(CheckResult.NO_PRIZE);
     assertEquals(result1, result2);
     LotteryTicketCheckResult result3 = new LotteryTicketCheckResult(CheckResult.WIN_PRIZE, 300000);
-    assertFalse(result1.equals(result3));
+    assertNotEquals(result1, result3);
   } 
 }
